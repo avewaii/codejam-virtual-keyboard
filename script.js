@@ -1,11 +1,12 @@
-let div = document.createElement('div');
-div.id = "keyboardBox";
-document.body.append(div);
+let section = document.createElement('section');
+section.id = "keyboardBox";
+document.body.append(section);
 
 let line1 = document.createElement('div');
 line1.id = "line1";
 line1.className = "line line1"
 line1.innerHTML = "<div>ё</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>";
+
 
 
 document.getElementById('keyboardBox').append(line1);
@@ -38,12 +39,44 @@ line5.innerHTML = "<div>Ctrl</div><div>Fn</div><div>Wn</div><div>Alt</div><div>S
 
 document.getElementById('keyboardBox').append(line5);
 
-let textArea = document.createElement('div');
+let textArea = document.createElement('textarea');
 textArea.id ="textArea";
+textArea.autofocus = true;
 document.body.prepend(textArea);
 
-document.onkeypress = function (event) {
-    // alert(event.key);
+document.getElementById('textArea').onblur = function() {
+    document.getElementById('textArea').focus();
+}
 
-   // document.
+document.getElementById('keyboardBox').onclick = function(e) {
+
+    let key = e.target.innerText; 
+    let button = e.target;
+    if(e.target.classList.contains('line') || e.target.id == "keyboardBox" ) return; 
+    textArea.value += key + '';
+
+    colorKey(button);
+}
+
+function colorKey(button) {
+
+    button.style.backgroundColor = 'red';
+
+    setTimeout(() => {
+    button.style.backgroundColor = null;
+    }, 500);
+}
+
+addEventListener("keydown", keyPress);
+
+function keyPress(event) {
+    let divs = document.getElementsByTagName('DIV'); //массив дивов
+
+    for (let i = 0; i < divs.length; i++) {
+
+        if(divs[i].innerText == event.key) {
+            colorKey(divs[i]);
+        }
+    }
+
 }

@@ -29,6 +29,7 @@
     text-align: center;
     color: white;
     cursor: pointer;
+    transition: 0.5s;
 }
 .wideButton {
     background-color: aqua;
