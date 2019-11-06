@@ -44,16 +44,32 @@ textArea.id ="textArea";
 textArea.autofocus = true;
 document.body.prepend(textArea);
 
+
+
 document.getElementById('textArea').onblur = function() {
     document.getElementById('textArea').focus();
 }
+
 
 document.getElementById('keyboardBox').onclick = function(e) {
 
     let key = e.target.innerText; 
     let button = e.target;
-    if(e.target.classList.contains('line') || e.target.id == "keyboardBox" ) return; 
-    textArea.value += key + '';
+    if(e.target.classList.contains('line') || e.target.id == "keyboardBox" ) {
+        return;
+    }   else if(e.target.innerText == 'Space') {
+            textArea.value += " ";
+        } else if ( e.target.innerText == 'Caps lock') {
+            document.getElementsByTagName('DIV').forEach(element => {
+                element.innerText.toUpperCase();
+            });
+        } else if ( e.target.innerText == 'Tab' || e.target.innerText == 'Shift'|| e.target.innerText == 'Ctrl' || e.target.innerText == 'Fn' || e.target.innerText == 'Wn' || 
+            e.target.innerText == 'Alt') {
+            textArea.value += "";
+        } else {
+        textArea.value += key + '';
+        }
+  
 
     colorKey(button);
 }
@@ -87,11 +103,12 @@ function runOnKeys(func, ...codes) {
     document.addEventListener('keydown', function(event) {
       pressed.add(event.code);
 
-      for (let code of codes) {
+      for (let code of codes) { 
         if (!pressed.has(code)) {
           return;
         }
       }
+
       pressed.clear();
 
       func();
@@ -103,6 +120,7 @@ function runOnKeys(func, ...codes) {
 
   }
   function changeLanguage() {
+
     switch(line1.innerHTML){
         case "<div>ё</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>" :
                 line1.innerHTML = "<div>`</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>";
@@ -120,6 +138,7 @@ function runOnKeys(func, ...codes) {
                 line5.innerHTML = "<div>Ctrl</div><div>Fn</div><div>Wn</div><div>Alt</div><div>Space</div><div>Alt</div><div>Ctrl</div><div><-</div><div>б</div><div>-></div>";
                 break;
             }
+
   }
   runOnKeys(
     changeLanguage,
