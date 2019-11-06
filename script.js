@@ -143,5 +143,5 @@ function runOnKeys(func, ...codes) {
   runOnKeys(
     changeLanguage,
     "ShiftLeft",
-    "ShiftLeft"
+    "AltLeft"
   );
