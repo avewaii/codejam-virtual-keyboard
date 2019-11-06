@@ -80,3 +80,49 @@ function keyPress(event) {
     }
 
 }
+
+function runOnKeys(func, ...codes) {
+    let pressed = new Set();
+
+    document.addEventListener('keydown', function(event) {
+      pressed.add(event.code);
+
+      for (let code of codes) {
+        if (!pressed.has(code)) {
+          return;
+        }
+      }
+      pressed.clear();
+
+      func();
+    });
+
+    document.addEventListener('keyup', function(event) {
+      pressed.delete(event.code);
+    });
+
+  }
+  function changeLanguage() {
+    switch(line1.innerHTML){
+        case "<div>ё</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>" :
+                line1.innerHTML = "<div>`</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>";
+                line2.innerHTML = "<div>Tab</div><div>q</div><div>w</div><div>e</div><div>r</div><div>t</div><div>y</div><div>u</div><div>i</div><div>o</div><div>p</div><div>[</div><div>]</div><div>\</div>";
+                line3.innerHTML = "<div>Caps lock</div><div>a</div><div>s</div><div>d</div><div>f</div><div>g</div><div>h</div><div>j</div><div>k</div><div>l</div><div>;</div><div>'</div><div>Enter</iv>";
+                line4.innerHTML = "<div>Shift</div><div>z</div><div>x</div><div>c</div><div>v</div><div>b</div><div>n</div><div>m</div><div>,</div><div>.</div><div>/</div><div>Shift</div>";
+                line5.innerHTML = "<div>Ctrl</div><div>Fn</div><div>Wn</div><div>Alt</div><div>Space</div><div>Alt</div><div>Ctrl</div><div>Left</div><div>Up</div><div>Down</div><div>Right</div>";
+                break;
+        
+        case "<div>`</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>" :
+                line1.innerHTML = "<div>ё</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>0</div><div>-</div><div>+</div><div>Backspace</div>";
+                line2.innerHTML = "<div>Tab</div><div>й</div><div>ц</div><div>у</div><div>к</div><div>е</div><div>н</div><div>г</div><div>ш</div><div>щ</div><div>з</div><div>х</div><div>ъ</div><div>\</div>";
+                line3.innerHTML = "<div>Caps lock</div><div>ф</div><div>ы</div><div>в</div><div>а</div><div>п</div><div>р</div><div>о</div><div>л</div><div>д</div><div>ж</div><div>э</div><div>Enter</div>";
+                line4.innerHTML = "<div>Shift</div><div>я</div><div>ч</div><div>с</div><div>м</div><div>и</div><div>т</div><div>ь</div><div>б</div><div>ю</div><div>.</div><div>Shift</div>";
+                line5.innerHTML = "<div>Ctrl</div><div>Fn</div><div>Wn</div><div>Alt</div><div>Space</div><div>Alt</div><div>Ctrl</div><div><-</div><div>б</div><div>-></div>";
+                break;
+            }
+  }
+  runOnKeys(
+    changeLanguage,
+    "ShiftLeft",
+    "ShiftLeft"
+  );
