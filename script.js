@@ -76,7 +76,7 @@ document.getElementById('keyboardBox').onclick = function(e) {
 
 function colorKey(button) {
 
-    button.style.backgroundColor = 'red';
+    button.style.backgroundColor = 'yellow';
 
     setTimeout(() => {
     button.style.backgroundColor = null;

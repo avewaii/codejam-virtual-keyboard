@@ -1,17 +1,20 @@
+
 #keyboardBox {
     position: fixed;
     bottom: 0;
-    left: 10%;
-    margin: 0 auto;
-    background-color: aqua;
+    left: 15%;
+    background-color: rgb(220, 226, 226);
     max-width: 80%;
-    min-width: 80%;
-    border: 2px solid red;
+    min-width: 70%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: initial;
 }
+
 .line {
     display: flex;
     justify-content: space-between;
-    
 }
 
 .line div {
@@ -19,44 +22,34 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    background-color: #7e4939;
+    border: 1px solid rgb(7, 7, 7);
+    background-color: #f5dff1;
     border-radius: 10%;
     height: 1em;
     width: 6%;
     padding: 1.2em;
     margin: 0.1em;
     text-align: center;
-    color: white;
+    color: rgb(22, 21, 21);
     cursor: pointer;
     transition: 0.5s;
 }
+
 .wideButton {
     background-color: aqua;
     width: 12%;
 }
-.line div:hover {
-    background-color: #b38972;
-}
 
-.line div:first-child {
-    background-color: brown;
-    flex-shrink: initial;
+.line div:hover {
+    background-color: #f7d9ca;
 }
 
 #textArea {
     position: fixed;
     top:0;
-    left: 10%;
-    margin: 0 auto;
-    height: 200px;
-    width: 80%;
-    border: 2px solid red;
+    left: 15%;
+    height: 45%;
+    width: 70%;
+    border: 1px solid gray;
+    outline: none;
 }
-/* .alert {
-    padding: 15px;
-    border: 1px solid #d6e9c6;
-    border-radius: 4px;
-    color: #3c763d;
-    background-color: #dff0d8;
-  } */
